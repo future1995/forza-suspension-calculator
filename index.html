@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+<title>Калькулятор подвески Forza Horizon 5</title>
+</head>
+<body>
+
+<header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+    <h1 data-lang-key="pageTitle" style="margin: 0;">Forza Horizon 4/5: suspension calculator</h1>
+    <div style="display: flex; gap: 20px; align-items: center;">
+        <div class="theme-switcher" style="display: flex; align-items: center; gap: 10px;">
+            <span data-lang-key="themeLight">Dark mode: OFF</span>
+            <label class="theme-toggle-label">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+            <span data-lang-key="themeDark">Dark mode: ON</span>
+        </div>
+    </div>
+</header>
+
+<div class="main-container">
+    <div class="input-column">
+        <div class="block">
+            <div class="d-flex">
+                <div class="input-group flex-grow">
+                    <label for="weight">Weight (KG)</label>
+                    <input type="number" id="weight" min="1" step="1" placeholder="1800">
+                    <div id="weight-error" class="error"></div>
+                </div>
+                <div class="input-group flex-grow">
+                    <label for="balance">Weight Balance (%)</label>
+                    <input type="number" id="balance" min="1" max="99" step="1" placeholder="50">
+                    <div id="balance-error" class="error"></div>
+                </div>
+            </div>
+			<div class="input-group">
+				<label>Suspension Type</label>
+				<div class="checkbox-group">
+					<label for="race-suspension" class="checkbox-option">
+						<input type="radio" id="race-suspension" name="suspension" value="race" checked>
+						<span>Racing / Rally (FH5)</span>
+					</label>
+					<label for="offroad-fh4-suspension" class="checkbox-option">
+						<input type="radio" id="offroad-fh4-suspension" name="suspension" value="offroad-fh4">
+						<span>Off-road (FH4)</span>
+					</label>
+				</div>
+			</div>
+             <div class="input-group">
+                <label>Aerodynamics</label>
+                <div class="checkbox-group">
+                    <label for="front-aero" class="checkbox-option">
+                        <input type="checkbox" id="front-aero">
+                        <span>Front Splitter</span>
+                    </label>
+                    <label for="rear-aero" class="checkbox-option">
+                        <input type="checkbox" id="rear-aero">
+                        <span>Rear  Spoiler</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="block">
+             <h2>Drivetrain</h2>
+             <div class="d-flex">
+                 <div class="input-group flex-grow">
+                     <label for="stock-drive-type">Stock</label>
+                     <select id="stock-drive-type">
+                         <option value="rwd" selected>Rear</option>
+                         <option value="awd">4WD</option>
+                         <option value="fwd">Front</option>
+                     </select>
+                 </div>
+                 <div class="input-group">
+                      <label for="drive-type-swap-checkbox">Drivetrain Swap</label>
+                      <input type="checkbox" id="drive-type-swap-checkbox">
+                 </div>
+             </div>
+             <div id="swap-drive-type-group">
+                 <label for="swap-drive-type">New Drivetrain Type</label>
+                 <select id="swap-drive-type"></select>
+             </div>
+        </div>
+
+        <div class="block">
+            <h2>Freqency Tuning</h2>
+            <div class="input-group">
+                <label for="front-freq">Target Ride Frequency (Hz)</label>
+                <input type="number" id="front-freq" min="0.1" max="5" step="0.01" value="2.45">
+            </div>
+            <div class="input-group">
+                <label for="rear-bias">Rear Stiffness Bias (%)</label>
+                <input type="number" id="rear-bias" min="-50" max="50" step="1" value="15">
+            </div>
+            <div class="input-group">
+                <label for="stiffness-multiplier">Overall Stiffness Multiplier</label>
+                <input type="number" id="stiffness-multiplier" min="0.5" max="2" step="0.05" value="1.0">
+            </div>
+        </div>
+        
+        <div class="block">
+            <h2>Springs Range</h2>
+            <div class="input-group">
+                <label>Front (KGF/MM)</label>
+                <div class="range-inputs">
+                    <input type="number" id="front-spring-min" min="1" step="0.1" placeholder="Min.">
+                    <input type="number" id="front-spring-max" min="1" step="0.1" placeholder="Max.">
+                </div>
+                <div id="front-spring-error" class="error"></div>
+            </div>
+            <div class="input-group">
+                <label>Rear (KGF/MM)</label>
+                <div class="range-inputs">
+                    <input type="number" id="rear-spring-min" min="1" step="0.1" placeholder="Min.">
+                    <input type="number" id="rear-spring-max" min="1" step="0.1" placeholder="Max.">
+                </div>
+                <div id="rear-spring-error" class="error"></div>
+            </div>
+        </div>
+        <button id="calculate-btn">Calculate</button>
+    </div>
+
+    <div class="results-column">
+        <div id="results-container">
+            <h2>Recommended Settings</h2>
+            <div class="result-item">
+                <div class="result-title">Springs</div>
+                <div class="result-line"><span>Front:</span> <span id="res-front-spring">--.- KGF/MM</span></div>
+                <div class="result-line"><span>Rear:</span> <span id="res-rear-spring">--.- KGF/MM</span></div>
+            </div>
+            <div class="result-item">
+                <div class="result-title">Dampers</div>
+                <div class="result-line"><span>Rebound Front:</span> <span id="res-front-rebound">--.-</span></div>
+                <div class="result-line"><span>Rebound Rear:</span> <span id="res-rear-rebound">--.-</span></div>
+                <div class="result-line"><span>Compression Front:</span> <span id="res-front-compression">--.-</span></div>
+                <div class="result-line"><span>Compression Rear:</span> <span id="res-rear-compression">--.-</span></div>
+            </div>
+            <div class="result-item">
+                <div class="result-title">Anti-Roll Bars</div>
+                <div class="result-line"><span>Front:</span> <span id="res-front-arb">--.-</span></div>
+                <div class="result-line"><span>Rear:</span> <span id="res-rear-arb">--.-</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>ver. 1.01, author: 1337mekanik (i337mekanik)</footer>
+<script src="js/script.js"></script>
+</body>
+</html>
