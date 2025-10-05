@@ -1,1 +1,289 @@
-const _0xed63a6=_0x1a31;(function(_0x50a2b0,_0x2f434b){const _0x18e14c=_0x1a31,_0x5204d0=_0x50a2b0();while(!![]){try{const _0x2a67fd=parseInt(_0x18e14c(0x153))/0x1+parseInt(_0x18e14c(0x152))/0x2*(parseInt(_0x18e14c(0x189))/0x3)+parseInt(_0x18e14c(0x178))/0x4+parseInt(_0x18e14c(0x196))/0x5+parseInt(_0x18e14c(0x165))/0x6+-parseInt(_0x18e14c(0x184))/0x7*(parseInt(_0x18e14c(0x197))/0x8)+-parseInt(_0x18e14c(0x164))/0x9;if(_0x2a67fd===_0x2f434b)break;else _0x5204d0['push'](_0x5204d0['shift']());}catch(_0x29bf5e){_0x5204d0['push'](_0x5204d0['shift']());}}}(_0x4fc8,0x1c684),document[_0xed63a6(0x140)](_0xed63a6(0x179),function(){const _0x42e8e2=_0xed63a6,_0x2622d7=document[_0x42e8e2(0x19d)](_0x42e8e2(0x15d)),_0x380e5d=document[_0x42e8e2(0x19d)](_0x42e8e2(0x163)),_0x5e623e=document[_0x42e8e2(0x19d)](_0x42e8e2(0x18c)),_0x29afe9=document[_0x42e8e2(0x19d)](_0x42e8e2(0x173)),_0x53d692=document['getElementById'](_0x42e8e2(0x17f)),_0x5cb1f0=document['getElementById'](_0x42e8e2(0x151)),_0x2da3fc=document[_0x42e8e2(0x19d)](_0x42e8e2(0x17a)),_0x1a1501={'rwd':_0x42e8e2(0x18f),'awd':_0x42e8e2(0x172),'fwd':_0x42e8e2(0x181)};_0x5cb1f0['addEventListener'](_0x42e8e2(0x143),function(){const _0x4a172c=_0x42e8e2;document['body']['classList'][_0x4a172c(0x19c)]('dark-mode',this[_0x4a172c(0x199)]),localStorage[_0x4a172c(0x148)](_0x4a172c(0x170),this[_0x4a172c(0x199)]?_0x4a172c(0x174):_0x4a172c(0x18e));});(localStorage[_0x42e8e2(0x142)](_0x42e8e2(0x170))==='dark'||window[_0x42e8e2(0x147)]&&window[_0x42e8e2(0x147)](_0x42e8e2(0x16d))[_0x42e8e2(0x19f)]&&!localStorage[_0x42e8e2(0x142)](_0x42e8e2(0x170)))&&(_0x5cb1f0[_0x42e8e2(0x199)]=!![],document[_0x42e8e2(0x187)]['classList']['add'](_0x42e8e2(0x1a2)));_0x2622d7['addEventListener']('change',function(){const _0x4ea4fe=_0x42e8e2;_0x380e5d[_0x4ea4fe(0x180)]['display']=this[_0x4ea4fe(0x199)]?_0x4ea4fe(0x185):'none',this[_0x4ea4fe(0x199)]&&_0x106e5e();}),_0x5e623e[_0x42e8e2(0x140)](_0x42e8e2(0x143),_0x106e5e);function _0x106e5e(){const _0xa257af=_0x42e8e2,_0x2a882c=_0x5e623e[_0xa257af(0x17d)];_0x29afe9[_0xa257af(0x182)]='';for(const _0x2dcdd5 in _0x1a1501){if(_0x2dcdd5!==_0x2a882c){const _0x41b0ad=document['createElement']('option');_0x41b0ad[_0xa257af(0x17d)]=_0x2dcdd5,_0x41b0ad[_0xa257af(0x14d)]=_0x1a1501[_0x2dcdd5],_0x29afe9[_0xa257af(0x16a)](_0x41b0ad);}}}_0x53d692[_0x42e8e2(0x140)]('click',function(){const _0x5f58cf=_0x42e8e2;if(!_0x2e0ef0())return;const _0x34a17d=_0x395dc0();let {frontSpring:_0x5b6740,rearSpring:_0x32c4cb}=_0x5c195a(_0x34a17d);if(_0x34a17d[_0x5f58cf(0x16f)])_0x5b6740*=1.15;if(_0x34a17d[_0x5f58cf(0x18a)])_0x32c4cb*=1.15;_0x5b6740*=_0x34a17d[_0x5f58cf(0x154)],_0x32c4cb*=_0x34a17d['stiffnessMultiplier'];const _0xa7aff9=_0x260233(_0x5b6740,_0x34a17d[_0x5f58cf(0x1a3)],_0x34a17d[_0x5f58cf(0x183)]),_0x486b76=_0x260233(_0x32c4cb,_0x34a17d[_0x5f58cf(0x17b)],_0x34a17d[_0x5f58cf(0x188)]),{frontRebound:_0x1de676,rearRebound:_0x42af78,frontCompression:_0x126b4f,rearCompression:_0x2e8734}=_0x597c24(_0xa7aff9,_0x486b76,_0x34a17d[_0x5f58cf(0x169)]),{frontARB:_0x429843,rearARB:_0x131033}=_0x59d319(_0xa7aff9,_0x486b76,_0x34a17d[_0x5f58cf(0x18d)],_0x34a17d[_0x5f58cf(0x15a)]);_0x2da3fc[_0x5f58cf(0x180)][_0x5f58cf(0x19e)]='block',_0x5c11ef({'frontSpring':_0xa7aff9,'rearSpring':_0x486b76,'frontRebound':_0x1de676,'rearRebound':_0x42af78,'frontCompression':_0x126b4f,'rearCompression':_0x2e8734,'frontARB':_0x429843,'rearARB':_0x131033});});function _0x395dc0(){const _0x2093e5=_0x42e8e2,_0x25c752=document['getElementById'](_0x2093e5(0x15d))[_0x2093e5(0x199)],_0x46c00b=_0x25c752?document[_0x2093e5(0x19d)](_0x2093e5(0x173))['value']:document['getElementById'](_0x2093e5(0x18c))[_0x2093e5(0x17d)];return{'weight':parseFloat(document[_0x2093e5(0x19d)]('weight')[_0x2093e5(0x17d)]),'balance':parseFloat(document['getElementById'](_0x2093e5(0x18d))['value'])/0x64,'suspensionType':document[_0x2093e5(0x144)](_0x2093e5(0x162))['value'],'effectiveDriveType':_0x46c00b,'frontSpringMin':parseFloat(document['getElementById'](_0x2093e5(0x160))[_0x2093e5(0x17d)]),'frontSpringMax':parseFloat(document['getElementById'](_0x2093e5(0x190))['value']),'rearSpringMin':parseFloat(document['getElementById']('rear-spring-min')[_0x2093e5(0x17d)]),'rearSpringMax':parseFloat(document['getElementById']('rear-spring-max')[_0x2093e5(0x17d)]),'hasFrontAero':document['getElementById'](_0x2093e5(0x146))[_0x2093e5(0x199)],'hasRearAero':document[_0x2093e5(0x19d)](_0x2093e5(0x177))[_0x2093e5(0x199)],'frontFreq':parseFloat(document['getElementById'](_0x2093e5(0x171))[_0x2093e5(0x17d)]),'rearBias':parseFloat(document[_0x2093e5(0x19d)](_0x2093e5(0x175))[_0x2093e5(0x17d)]),'stiffnessMultiplier':parseFloat(document[_0x2093e5(0x19d)]('stiffness-multiplier')['value'])};}function _0x5c195a({weight:_0x35582e,balance:_0x37080f,frontFreq:_0xd942b6,rearBias:_0x6d6994}){const _0x85bf57=_0x42e8e2,_0x194e27=_0x35582e*_0x37080f/0x2,_0x280ffa=_0x35582e*(0x1-_0x37080f)/0x2,_0x3c50c9=_0xd942b6*(0x1+_0x6d6994/0x64),_0x8404ac=_0x194e27*Math[_0x85bf57(0x176)](0x2*Math['PI']*_0xd942b6,0x2)/0x3e8,_0x619aea=_0x280ffa*Math[_0x85bf57(0x176)](0x2*Math['PI']*_0x3c50c9,0x2)/0x3e8;return{'frontSpring':_0x8404ac,'rearSpring':_0x619aea};}function _0x597c24(_0x253ea5,_0x3cbe06,_0x93c379){const _0x159448=_0x42e8e2;let _0x8f11fc;_0x93c379===_0x159448(0x145)?_0x8f11fc={'DIVISOR':0xf,'COMPRESSION_RATIO':0.6,'MIN_VAL':0x1,'MAX_VAL':0xa}:_0x8f11fc={'DIVISOR':17.5,'COMPRESSION_RATIO':0.7,'MIN_VAL':0x1,'MAX_VAL':0x14};const _0x2d5bc7=_0x260233(_0x253ea5/_0x8f11fc[_0x159448(0x1a1)],_0x8f11fc[_0x159448(0x14b)],_0x8f11fc[_0x159448(0x141)]),_0x119790=_0x260233(_0x3cbe06/_0x8f11fc[_0x159448(0x1a1)],_0x8f11fc[_0x159448(0x14b)],_0x8f11fc['MAX_VAL']),_0x44b71e=_0x93c379===_0x159448(0x145)?_0x8f11fc[_0x159448(0x14b)]:_0x8f11fc[_0x159448(0x14b)]/0x2,_0x37a802=_0x260233(_0x2d5bc7*_0x8f11fc[_0x159448(0x15e)],_0x44b71e,_0x8f11fc['MAX_VAL']),_0x342d32=_0x260233(_0x119790*_0x8f11fc[_0x159448(0x15e)],_0x44b71e,_0x8f11fc[_0x159448(0x141)]);return{'frontRebound':_0x2d5bc7,'rearRebound':_0x119790,'frontCompression':_0x37a802,'rearCompression':_0x342d32};}function _0x59d319(_0x1b6e02,_0x2b3d3a,_0x1bb9ec,_0x3c328f){const _0x5b6579=_0x42e8e2,_0x328636={'min':0x1,'max':0x41};let _0x3f72b9=0x1,_0x427fb7=0x1;switch(_0x3c328f){case _0x5b6579(0x192):_0x3f72b9=1.25,_0x427fb7=0.75;break;case _0x5b6579(0x18b):_0x3f72b9=0.85,_0x427fb7=1.15;break;}const _0x771063=_0x1b6e02*0.155*(_0x1bb9ec/0.5)*_0x3f72b9,_0x2eacff=_0x2b3d3a*0.155*((0x1-_0x1bb9ec)/0.5)*_0x427fb7;return{'frontARB':_0x260233(_0x771063,_0x328636[_0x5b6579(0x186)],_0x328636[_0x5b6579(0x161)]),'rearARB':_0x260233(_0x2eacff,_0x328636[_0x5b6579(0x186)],_0x328636[_0x5b6579(0x161)])};}function _0x5c11ef(_0x3357e5){const _0x5c31a1=_0x42e8e2;document['getElementById'](_0x5c31a1(0x155))[_0x5c31a1(0x14d)]=_0x3357e5[_0x5c31a1(0x15b)][_0x5c31a1(0x1a0)](0x1)+_0x5c31a1(0x16e),document['getElementById'](_0x5c31a1(0x168))[_0x5c31a1(0x14d)]=_0x3357e5[_0x5c31a1(0x17c)]['toFixed'](0x1)+_0x5c31a1(0x16e),document[_0x5c31a1(0x19d)](_0x5c31a1(0x19a))[_0x5c31a1(0x14d)]=_0x3357e5['frontRebound'][_0x5c31a1(0x1a0)](0x1),document[_0x5c31a1(0x19d)](_0x5c31a1(0x15c))['textContent']=_0x3357e5[_0x5c31a1(0x16b)]['toFixed'](0x1),document[_0x5c31a1(0x19d)]('res-front-compression')[_0x5c31a1(0x14d)]=_0x3357e5[_0x5c31a1(0x150)][_0x5c31a1(0x1a0)](0x1),document[_0x5c31a1(0x19d)](_0x5c31a1(0x158))['textContent']=_0x3357e5[_0x5c31a1(0x157)][_0x5c31a1(0x1a0)](0x1),document[_0x5c31a1(0x19d)](_0x5c31a1(0x14e))[_0x5c31a1(0x14d)]=_0x3357e5[_0x5c31a1(0x15f)][_0x5c31a1(0x1a0)](0x1),document['getElementById'](_0x5c31a1(0x167))[_0x5c31a1(0x14d)]=_0x3357e5[_0x5c31a1(0x166)][_0x5c31a1(0x1a0)](0x1);}function _0x260233(_0x288724,_0x57746c,_0x950d64){const _0x3760a1=_0x42e8e2;return Math[_0x3760a1(0x186)](Math['max'](_0x288724,_0x57746c),_0x950d64);}function _0x2e0ef0(){const _0x5628e7=_0x42e8e2;let _0x4b51e4=!![];document[_0x5628e7(0x198)](_0x5628e7(0x156))[_0x5628e7(0x17e)](_0x2b9e80=>_0x2b9e80[_0x5628e7(0x14d)]='');if(!_0x42e763(_0x5628e7(0x193),_0x5628e7(0x149)))_0x4b51e4=![];if(!_0x42e763('balance',_0x5628e7(0x14a),0x1,0x63))_0x4b51e4=![];if(!_0x4f98f7(_0x5628e7(0x160),_0x5628e7(0x190),'front-spring-error'))_0x4b51e4=![];if(!_0x4f98f7(_0x5628e7(0x159),_0x5628e7(0x14f),_0x5628e7(0x191)))_0x4b51e4=![];return _0x4b51e4;}function _0x42e763(_0x567918,_0x1ee30f,_0x45c044=0x0,_0x5c6315=Infinity){const _0x481430=_0x42e8e2,_0xf2dad1=document[_0x481430(0x19d)](_0x567918),_0xc2bb1c=document[_0x481430(0x19d)](_0x567918+_0x481430(0x14c)),_0x267de5=parseFloat(_0xf2dad1['value']);if(!_0xf2dad1['value']||isNaN(_0x267de5)||_0x267de5<=_0x45c044||_0x267de5>=_0x5c6315)return _0xc2bb1c[_0x481430(0x14d)]=_0x1ee30f,_0xf2dad1['style'][_0x481430(0x19b)]=_0x481430(0x16c),![];return _0xf2dad1[_0x481430(0x180)][_0x481430(0x19b)]='',!![];}function _0x4f98f7(_0x55ad2a,_0x2f8b60,_0x11875f){const _0x17d019=_0x42e8e2,_0xa641da=document[_0x17d019(0x19d)](_0x55ad2a),_0x49e41e=document[_0x17d019(0x19d)](_0x2f8b60),_0x263aba=document['getElementById'](_0x11875f),_0x397013=parseFloat(_0xa641da[_0x17d019(0x17d)]),_0x216fd1=parseFloat(_0x49e41e[_0x17d019(0x17d)]);let _0x7c9510=!![];return _0xa641da['style']['borderColor']='',_0x49e41e[_0x17d019(0x180)][_0x17d019(0x19b)]='',(!_0xa641da[_0x17d019(0x17d)]||isNaN(_0x397013)||_0x397013<=0x0)&&(_0x263aba['textContent']='Введите\x20мин.\x20значение',_0xa641da['style'][_0x17d019(0x19b)]='#ff4d4d',_0x7c9510=![]),(!_0x49e41e['value']||isNaN(_0x216fd1)||_0x216fd1<=0x0)&&(_0x263aba[_0x17d019(0x14d)]=_0x17d019(0x195),_0x49e41e['style'][_0x17d019(0x19b)]=_0x17d019(0x16c),_0x7c9510=![]),_0x7c9510&&_0x397013>=_0x216fd1&&(_0x263aba['textContent']=_0x17d019(0x194),_0xa641da[_0x17d019(0x180)][_0x17d019(0x19b)]=_0x17d019(0x16c),_0x49e41e[_0x17d019(0x180)]['borderColor']=_0x17d019(0x16c),_0x7c9510=![]),_0x7c9510&&(_0x263aba[_0x17d019(0x14d)]=''),_0x7c9510;}_0x106e5e();}));function _0x1a31(_0x3dd3cd,_0x1c6a36){const _0x4fc845=_0x4fc8();return _0x1a31=function(_0x1a312b,_0x306e21){_0x1a312b=_0x1a312b-0x140;let _0x467575=_0x4fc845[_0x1a312b];return _0x467575;},_0x1a31(_0x3dd3cd,_0x1c6a36);}function _0x4fc8(){const _0x418386=['frontARB','front-spring-min','max','input[name=\x22suspension\x22]:checked','swap-drive-type-group','2908647ZtdRvi','989250IFbUpv','rearARB','res-rear-arb','res-rear-spring','suspensionType','appendChild','rearRebound','#ff4d4d','(prefers-color-scheme:\x20dark)','\x20кгс/мм','hasFrontAero','theme','front-freq','4WD','swap-drive-type','dark','rear-bias','pow','rear-aero','335672OXBgml','DOMContentLoaded','results-container','rearSpringMin','rearSpring','value','forEach','calculate-btn','style','Front','innerHTML','frontSpringMax','196ceBjDW','block','min','body','rearSpringMax','645lKcFGQ','hasRearAero','rwd','stock-drive-type','balance','light','Rear','front-spring-max','rear-spring-error','fwd','weight','Макс.\x20>\x20мин.','Введите\x20макс.\x20значение','798170cQfCku','13784gnUqKb','querySelectorAll','checked','res-front-rebound','borderColor','toggle','getElementById','display','matches','toFixed','DIVISOR','dark-mode','frontSpringMin','addEventListener','MAX_VAL','getItem','change','querySelector','offroad-fh4','front-aero','matchMedia','setItem','Введите\x20вес','1-99','MIN_VAL','-error','textContent','res-front-arb','rear-spring-max','frontCompression','theme-toggle','214KiZWpL','56351zIZimO','stiffnessMultiplier','res-front-spring','.error','rearCompression','res-rear-compression','rear-spring-min','effectiveDriveType','frontSpring','res-rear-rebound','drive-type-swap-checkbox','COMPRESSION_RATIO'];_0x4fc8=function(){return _0x418386;};return _0x4fc8();}
+document.addEventListener('DOMContentLoaded', function() {
+    const swapCheckboxEl = document.getElementById('drive-type-swap-checkbox');
+    const swapGroupEl = document.getElementById('swap-drive-type-group');
+    const stockDriveEl = document.getElementById('stock-drive-type');
+    const swapDriveEl = document.getElementById('swap-drive-type');
+    const calculateBtn = document.getElementById('calculate-btn');
+    const themeToggle = document.getElementById('theme-toggle');
+    const resultsContainer = document.getElementById('results-container');
+
+    const driveOptions = {
+        rwd: 'Rear',
+        awd: '4WD',
+        fwd: 'Front'
+    };
+    
+    themeToggle.addEventListener('change', function() {
+        document.body.classList.toggle('dark-mode', this.checked);
+        localStorage.setItem('theme', this.checked ? 'dark' : 'light');
+    });
+    if (localStorage.getItem('theme') === 'dark' || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'))) {
+        themeToggle.checked = true;
+        document.body.classList.add('dark-mode');
+    }
+
+    swapCheckboxEl.addEventListener('change', function() {
+        swapGroupEl.style.display = this.checked ? 'block' : 'none';
+        if(this.checked) {
+            updateSwapOptions();
+        }
+    });
+    stockDriveEl.addEventListener('change', updateSwapOptions);
+
+    function updateSwapOptions() {
+        const stockValue = stockDriveEl.value;
+        swapDriveEl.innerHTML = '';
+        for (const key in driveOptions) {
+            if (key !== stockValue) {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = driveOptions[key];
+                swapDriveEl.appendChild(option);
+            }
+        }
+    }
+
+    calculateBtn.addEventListener('click', function() {
+        if (!validateAllInputs()) {
+            return;
+        }
+        
+        const inputs = getFormValues();
+        
+        let { frontSpring, rearSpring } = calculateSpringsByFrequency(inputs);
+        
+        if (inputs.hasFrontAero) frontSpring *= 1.15;
+        if (inputs.hasRearAero) rearSpring *= 1.17;
+
+        frontSpring *= inputs.stiffnessMultiplier;
+        rearSpring *= inputs.stiffnessMultiplier;
+
+        const finalFrontSpring = clamp(frontSpring, inputs.frontSpringMin, inputs.frontSpringMax);
+        const finalRearSpring = clamp(rearSpring, inputs.rearSpringMin, inputs.rearSpringMax);
+
+        const { frontRebound, rearRebound, frontCompression, rearCompression } = calculateDampers(finalFrontSpring, finalRearSpring, inputs.suspensionType);
+        const { frontARB, rearARB } = calculateARBs(finalFrontSpring, finalRearSpring, inputs);
+        
+        resultsContainer.style.display = 'block';
+        displayResults({ 
+            frontSpring: finalFrontSpring, 
+            rearSpring: finalRearSpring, 
+            frontRebound, rearRebound, frontCompression, rearCompression, 
+            frontARB, rearARB
+        });
+    });
+    
+	function getFormValues() {
+		const isSwapped = document.getElementById('drive-type-swap-checkbox').checked;
+		const currentDriveType = isSwapped 
+			? document.getElementById('swap-drive-type').value 
+			: document.getElementById('stock-drive-type').value;
+
+		return {
+			weight: parseFloat(document.getElementById('weight').value),
+			balance: parseFloat(document.getElementById('balance').value) / 100,
+			suspensionType: document.querySelector('input[name="suspension"]:checked').value,
+			effectiveDriveType: currentDriveType,
+			frontSpringMin: parseFloat(document.getElementById('front-spring-min').value),
+			frontSpringMax: parseFloat(document.getElementById('front-spring-max').value),
+			rearSpringMin: parseFloat(document.getElementById('rear-spring-min').value),
+			rearSpringMax: parseFloat(document.getElementById('rear-spring-max').value),
+			hasFrontAero: document.getElementById('front-aero').checked,
+			hasRearAero: document.getElementById('rear-aero').checked,
+			frontFreq: parseFloat(document.getElementById('front-freq').value),
+			rearBias: parseFloat(document.getElementById('rear-bias').value),
+			stiffnessMultiplier: parseFloat(document.getElementById('stiffness-multiplier').value),
+		};
+	}
+    
+    function calculateSpringsByFrequency({ weight, balance, frontFreq, rearBias }) {
+        const frontSprungMass = (weight * balance) / 2;
+        const rearSprungMass = (weight * (1 - balance)) / 2;
+        const rearFreq = frontFreq * (1 + (rearBias / 100));
+        const frontSpring = (frontSprungMass * Math.pow(2 * Math.PI * frontFreq, 2)) / 1000;
+        const rearSpring = (rearSprungMass * Math.pow(2 * Math.PI * rearFreq, 2)) / 1000;
+        return { frontSpring, rearSpring };
+    }
+
+
+	
+	function calculateDampers(frontSpringKg, rearSpringKg, suspensionType) {
+		let params;
+
+		if (suspensionType === 'offroad-fh4') {
+			params = {
+				DIVISOR: 15.0,
+				COMPRESSION_RATIO: 0.6,
+				MIN_VAL: 1.0,
+				MAX_VAL: 10.0
+			};
+		} else if (suspensionType === 'racing-fh4') {
+			params = {
+				DIVISOR: 16.5,
+				COMPRESSION_RATIO: 0.7,
+				MIN_VAL: 3.0,
+				MAX_VAL: 20.0
+			};
+		} else { 
+			params = {
+				DIVISOR: 17.5,
+				COMPRESSION_RATIO: 0.7,
+				MIN_VAL: 1.0,
+				MAX_VAL: 20.0
+			};
+		}
+
+		const frontRebound = clamp(frontSpringKg / params.DIVISOR, params.MIN_VAL, params.MAX_VAL);
+		const rearRebound = clamp(rearSpringKg / params.DIVISOR, params.MIN_VAL, params.MAX_VAL);
+		
+		const compressionMinVal = (suspensionType === 'race') ? params.MIN_VAL / 2 : params.MIN_VAL;
+		
+		const frontCompression = clamp(frontRebound * params.COMPRESSION_RATIO, compressionMinVal, params.MAX_VAL);
+		const rearCompression = clamp(rearRebound * params.COMPRESSION_RATIO, compressionMinVal, params.MAX_VAL);
+		
+		return { frontRebound, rearRebound, frontCompression, rearCompression };
+	}
+
+    function calculateARBs(frontSpring, rearSpring, inputs) {
+        const arbRange = { min: 1, max: 65 };
+
+        // Вспомогательная функция для расчета нейтрального значения ARB
+        const calculateNeutralARB = (spring, minSpring, maxSpring) => {
+            // Предотвращение деления на ноль
+            if (maxSpring <= minSpring) {
+                return (arbRange.min + arbRange.max) / 2; // Возвращаем среднее значение в качестве запасного варианта
+            }
+            // Расчет, в каком проценте от доступного диапазона находится жесткость пружины
+            const stiffnessRatio = (spring - minSpring) / (maxSpring - minSpring);
+            // Применение этого процента к диапазону ARB
+            return (arbRange.max - arbRange.min) * stiffnessRatio + arbRange.min;
+        };
+
+        // Рассчитываем нейтральные базовые значения для переда и зада
+        let frontARB = calculateNeutralARB(frontSpring, inputs.frontSpringMin, inputs.frontSpringMax);
+        let rearARB = calculateNeutralARB(rearSpring, inputs.rearSpringMin, inputs.rearSpringMax);
+
+        // Применяем общепринятые смещения для коррекции управляемости
+        switch(inputs.effectiveDriveType) {
+            case 'fwd':
+                // Для FWD делаем зад жестче, чтобы бороться с андерстиром
+                rearARB = frontARB * 1.5;
+                break;
+            case 'rwd':
+                // Для RWD делаем перед немного жестче заднего для стабильности на выходе
+                frontARB = rearARB * 1.1;
+                break;
+            case 'awd_stock':
+                // Для стокового AWD нужна умеренная коррекция андерстира
+                rearARB = frontARB * 1.4;
+                break;
+            case 'awd_swapped':
+                // Для свапнутого AWD нужна агрессивная коррекция андерстира
+                rearARB = frontARB * 1.9;
+                break;
+        }
+
+        // Возвращаем значения, ограниченные диапазоном игры
+        return {
+            frontARB: clamp(frontARB, arbRange.min, arbRange.max),
+            rearARB: clamp(rearARB, arbRange.min, arbRange.max)
+        };
+    }
+    
+    function displayResults(data) {
+        document.getElementById('res-front-spring').textContent = `${data.frontSpring.toFixed(1)} KGF/MM`;
+        document.getElementById('res-rear-spring').textContent = `${data.rearSpring.toFixed(1)} KGF/MM`;
+        document.getElementById('res-front-rebound').textContent = data.frontRebound.toFixed(1);
+        document.getElementById('res-rear-rebound').textContent = data.rearRebound.toFixed(1);
+        document.getElementById('res-front-compression').textContent = data.frontCompression.toFixed(1);
+        document.getElementById('res-rear-compression').textContent = data.rearCompression.toFixed(1);
+        document.getElementById('res-front-arb').textContent = data.frontARB.toFixed(1);
+        document.getElementById('res-rear-arb').textContent = data.rearARB.toFixed(1);
+    }
+
+    function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
+    }
+    
+    function validateAllInputs() {
+        let isValid = true;
+        document.querySelectorAll('.error').forEach(el => el.textContent = '');
+
+        // Валидация основных полей
+        if (!validateField('weight', '100-5000', 100, 5000)) isValid = false;
+        if (!validateField('balance', '1-99', 1, 99)) isValid = false;
+
+        // Валидация полей Frequency Tuning
+        if (!validateField('front-freq', '1.0-6.0', 1.0, 6.0)) isValid = false;
+        if (!validateField('rear-bias', '-100 - +100', -100, 100)) isValid = false;
+        if (!validateField('stiffness-multiplier', '0.1-10', 0.1, 10)) isValid = false;
+
+        // Валидация диапазонов пружин
+        if (!validateRange('front-spring-min', 'front-spring-max', 'front-spring-error')) isValid = false;
+        if (!validateRange('rear-spring-min', 'rear-spring-max', 'rear-spring-error')) isValid = false;
+
+        return isValid;
+    }
+
+    function validateField(id, message, minVal = -Infinity, maxVal = Infinity) {
+        const element = document.getElementById(id);
+        const errorElement = document.getElementById(`${id}-error`);
+        const value = parseFloat(element.value);
+
+        if (element.value === '') { // Проверка на пустое поле
+            errorElement.textContent = 'Enter value';
+            element.style.borderColor = '#ff4d4d';
+            return false;
+        }
+
+        if (isNaN(value) || value < minVal || value > maxVal) {
+            errorElement.textContent = `Range: ${message}`;
+            element.style.borderColor = '#ff4d4d';
+            return false;
+        }
+
+        element.style.borderColor = '';
+        return true;
+    }
+
+    function validateRange(minId, maxId, errorId) {
+        const minEl = document.getElementById(minId);
+        const maxEl = document.getElementById(maxId);
+        const errorEl = document.getElementById(errorId);
+        const min = parseFloat(minEl.value);
+        const max = parseFloat(maxEl.value);
+        const minRange = 0;
+        const maxRange = 5000;
+        let isValid = true;
+
+        minEl.style.borderColor = '';
+        maxEl.style.borderColor = '';
+
+        if (!minEl.value || isNaN(min) || min < minRange || min > maxRange) {
+            errorEl.textContent = 'Enter min value (0-5000)';
+            minEl.style.borderColor = '#ff4d4d';
+            isValid = false;
+        }
+
+        if (!maxEl.value || isNaN(max) || max < minRange || max > maxRange) {
+            // Чтобы не дублировать сообщение, показываем его только если мин. поле в порядке
+            if (isValid) errorEl.textContent = 'Enter max value (0-5000)';
+            maxEl.style.borderColor = '#ff4d4d';
+            isValid = false;
+        }
+
+        if (isValid && min >= max) {
+            errorEl.textContent = 'max > min';
+            minEl.style.borderColor = '#ff4d4d';
+            maxEl.style.borderColor = '#ff4d4d';
+            isValid = false;
+        }
+
+        if (isValid) {
+            errorEl.textContent = '';
+        }
+        return isValid;
+    }
+
+    updateSwapOptions();
+});

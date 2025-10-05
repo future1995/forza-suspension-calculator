@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+<header style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
     <h1 data-lang-key="pageTitle" style="margin: 0;">Forza Horizon 4/5: suspension calculator</h1>
     <div style="display: flex; gap: 20px; align-items: center;">
         <div class="theme-switcher" style="display: flex; align-items: center; gap: 10px;">
@@ -28,12 +28,12 @@
             <div class="d-flex">
                 <div class="input-group flex-grow">
                     <label for="weight">Weight (KG)</label>
-                    <input type="number" id="weight" min="1" step="1" placeholder="1800">
+                    <input type="number" id="weight" min="100" max="5000" step="1" value="1500" maxlength="4">
                     <div id="weight-error" class="error"></div>
                 </div>
                 <div class="input-group flex-grow">
                     <label for="balance">Weight Balance (%)</label>
-                    <input type="number" id="balance" min="1" max="99" step="1" placeholder="50">
+                    <input type="number" id="balance" min="1" max="99" step="1" value="50" maxlength="2">
                     <div id="balance-error" class="error"></div>
                 </div>
             </div>
@@ -44,80 +44,100 @@
 						<input type="radio" id="race-suspension" name="suspension" value="race" checked>
 						<span>Racing / Rally (FH5)</span>
 					</label>
+					<label for="racing-fh4-suspension" class="checkbox-option">
+						<input type="radio" id="racing-fh4-suspension" name="suspension" value="racing-fh4">
+						<span>Racing (FH4)</span>
+					</label>
 					<label for="offroad-fh4-suspension" class="checkbox-option">
 						<input type="radio" id="offroad-fh4-suspension" name="suspension" value="offroad-fh4">
 						<span>Off-road (FH4)</span>
 					</label>
 				</div>
 			</div>
-             <div class="input-group">
+            <div class="input-group">
                 <label>Aerodynamics</label>
                 <div class="checkbox-group">
-                    <label for="front-aero" class="checkbox-option">
-                        <input type="checkbox" id="front-aero">
+                    <!-- Структура для Front Splitter заменена на слайдер -->
+                    <div class="checkbox-option">
                         <span>Front Splitter</span>
-                    </label>
-                    <label for="rear-aero" class="checkbox-option">
-                        <input type="checkbox" id="rear-aero">
-                        <span>Rear  Spoiler</span>
-                    </label>
+                        <label class="theme-toggle-label" for="front-aero">
+                            <input type="checkbox" id="front-aero">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <!-- Структура для Rear Spoiler заменена на слайдер -->
+                    <div class="checkbox-option">
+                        <span>Rear Spoiler</span>
+                        <label class="theme-toggle-label" for="rear-aero">
+                            <input type="checkbox" id="rear-aero">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="block">
-             <h2>Drivetrain</h2>
-             <div class="d-flex">
-                 <div class="input-group flex-grow">
-                     <label for="stock-drive-type">Stock</label>
-                     <select id="stock-drive-type">
-                         <option value="rwd" selected>Rear</option>
-                         <option value="awd">4WD</option>
-                         <option value="fwd">Front</option>
-                     </select>
-                 </div>
-                 <div class="input-group">
-                      <label for="drive-type-swap-checkbox">Drivetrain Swap</label>
-                      <input type="checkbox" id="drive-type-swap-checkbox">
-                 </div>
-             </div>
-             <div id="swap-drive-type-group">
-                 <label for="swap-drive-type">New Drivetrain Type</label>
-                 <select id="swap-drive-type"></select>
-             </div>
+            <h2>Drivetrain</h2>
+            <!-- Мы добавили новый класс 'd-flex-align-fix' для исправления выравнивания -->
+            <div class="d-flex d-flex-align-fix">
+                <div class="input-group flex-grow">
+                    <label for="stock-drive-type">Stock</label>
+                    <select id="stock-drive-type">
+                        <option value="rwd" selected>Rear</option>
+                        <option value="awd">4WD</option>
+                        <option value="fwd">Front</option>
+                    </select>
+                </div>
+                <!-- Здесь структура полностью заменена на слайдер -->
+                <div class="input-group drivetrain-swap-control">
+                    <label for="drive-type-swap-checkbox">Drivetrain Swap</label>
+                    <label class="theme-toggle-label" for="drive-type-swap-checkbox">
+                        <input type="checkbox" id="drive-type-swap-checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div id="swap-drive-type-group">
+                <label for="swap-drive-type">New Drivetrain Type</label>
+                <select id="swap-drive-type"></select>
+            </div>
         </div>
 
         <div class="block">
             <h2>Frequency Tuning</h2>
             <div class="input-group">
                 <label for="front-freq">Target Ride Frequency (Hz)</label>
-                <input type="number" id="front-freq" min="0.1" max="5" step="0.01" value="2.45">
+                <input type="number" id="front-freq" min="1.0" max="6.0" step="0.01" value="2.6" maxlength="4">
+                <div id="front-freq-error" class="error"></div>
             </div>
             <div class="input-group">
                 <label for="rear-bias">Rear Stiffness Bias (%)</label>
-                <input type="number" id="rear-bias" min="-50" max="50" step="1" value="15">
+                <input type="number" id="rear-bias" min="-100" max="100" step="1" value="0" maxlength="4">
+                <div id="rear-bias-error" class="error"></div>
             </div>
             <div class="input-group">
                 <label for="stiffness-multiplier">Overall Stiffness Multiplier</label>
-                <input type="number" id="stiffness-multiplier" min="0.5" max="2" step="0.05" value="1.0">
+                <input type="number" id="stiffness-multiplier" min="0.1" max="10" step="0.05" value="1.0">
+                <div id="stiffness-multiplier-error" class="error"></div>
             </div>
         </div>
-        
+
         <div class="block">
             <h2>Springs Range</h2>
             <div class="input-group">
                 <label>Front (KGF/MM)</label>
                 <div class="range-inputs">
-                    <input type="number" id="front-spring-min" min="1" step="0.1" placeholder="Min.">
-                    <input type="number" id="front-spring-max" min="1" step="0.1" placeholder="Max.">
+                    <input type="number" id="front-spring-min" min="0" max="5000" step="0.1" value="33,3" placeholder="Min." maxlength="6">
+                    <input type="number" id="front-spring-max" min="0" max="5000" step="0.1" value="33,3" placeholder="Max." maxlength="6">
                 </div>
                 <div id="front-spring-error" class="error"></div>
             </div>
             <div class="input-group">
                 <label>Rear (KGF/MM)</label>
                 <div class="range-inputs">
-                    <input type="number" id="rear-spring-min" min="1" step="0.1" placeholder="Min.">
-                    <input type="number" id="rear-spring-max" min="1" step="0.1" placeholder="Max.">
+                    <input type="number" id="rear-spring-min" min="0" max="5000" step="0.1" value="333,3" placeholder="Min." maxlength="6">
+                    <input type="number" id="rear-spring-max" min="0" max="5000" step="0.1" value="333,3" placeholder="Max." maxlength="6">
                 </div>
                 <div id="rear-spring-error" class="error"></div>
             </div>
