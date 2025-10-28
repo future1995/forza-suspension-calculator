@@ -28,12 +28,12 @@
             <div class="d-flex">
                 <div class="input-group flex-grow">
                     <label for="weight">Weight (KG)</label>
-                    <input type="number" id="weight" min="100" max="5000" step="1" value="1500" maxlength="4">
+                    <input type="number" id="weight" min="100" max="5000" step="1" placeholder = "1234" maxlength="4">
                     <div id="weight-error" class="error"></div>
                 </div>
                 <div class="input-group flex-grow">
                     <label for="balance">Weight Balance (%)</label>
-                    <input type="number" id="balance" min="1" max="99" step="1" value="50" maxlength="2">
+                    <input type="number" id="balance" min="1" max="99" step="1" placeholder = "48" maxlength="2">
                     <div id="balance-error" class="error"></div>
                 </div>
             </div>
@@ -108,12 +108,12 @@
             <h2>Frequency Tuning</h2>
             <div class="input-group">
                 <label for="front-freq">Target Ride Frequency (Hz)</label>
-                <input type="number" id="front-freq" min="1.0" max="6.0" step="0.01" value="2.6" maxlength="4">
+                <input type="number" id="front-freq" min="1.0" max="6.0" step="0.01" placeholder = "2.6" maxlength="4">
                 <div id="front-freq-error" class="error"></div>
             </div>
             <div class="input-group">
                 <label for="rear-bias">Rear Stiffness Bias (%)</label>
-                <input type="number" id="rear-bias" min="-100" max="100" step="1" value="0" maxlength="4">
+                <input type="number" id="rear-bias" min="-100" max="100" step="1" placeholder = "15" maxlength="4">
                 <div id="rear-bias-error" class="error"></div>
             </div>
             <div class="input-group">
@@ -128,18 +128,28 @@
             <div class="input-group">
                 <label>Front (KGF/MM)</label>
                 <div class="range-inputs">
-                    <input type="number" id="front-spring-min" min="0" max="5000" step="0.1" value="33,3" placeholder="Min." maxlength="6">
-                    <input type="number" id="front-spring-max" min="0" max="5000" step="0.1" value="33,3" placeholder="Max." maxlength="6">
+                    <div style="flex: 1;">
+                        <input type="number" id="front-spring-min" min="0" max="5000" step="0.1" placeholder="Min." maxlength="6">
+                        <div id="front-spring-min-error" class="error"></div>
+                    </div>
+                    <div style="flex: 1;">
+                        <input type="number" id="front-spring-max" min="0" max="5000" step="0.1" placeholder="Max." maxlength="6">
+                        <div id="front-spring-max-error" class="error"></div>
+                    </div>
                 </div>
-                <div id="front-spring-error" class="error"></div>
             </div>
             <div class="input-group">
                 <label>Rear (KGF/MM)</label>
                 <div class="range-inputs">
-                    <input type="number" id="rear-spring-min" min="0" max="5000" step="0.1" value="333,3" placeholder="Min." maxlength="6">
-                    <input type="number" id="rear-spring-max" min="0" max="5000" step="0.1" value="333,3" placeholder="Max." maxlength="6">
+                    <div style="flex: 1;">
+                        <input type="number" id="rear-spring-min" min="0" max="5000" step="0.1" placeholder="Min." maxlength="6">
+                        <div id="rear-spring-min-error" class="error"></div>
+                    </div>
+                    <div style="flex: 1;">
+                        <input type="number" id="rear-spring-max" min="0" max="5000" step="0.1" placeholder="Max." maxlength="6">
+                        <div id="rear-spring-max-error" class="error"></div>
+                    </div>
                 </div>
-                <div id="rear-spring-error" class="error"></div>
             </div>
         </div>
         <button id="calculate-btn">Calculate</button>
@@ -168,7 +178,7 @@
         </div>
     </div>
 </div>
-<footer>ver. 1.1, author: 1337mekanik (i337mekanik)</footer>
+<footer>ver. 1.2, author: 1337mekanik (i337mekanik)</footer>
 <script src="js/script.js"></script>
 </body>
 </html>

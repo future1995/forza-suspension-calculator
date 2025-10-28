@@ -12,6 +12,18 @@ document.addEventListener('DOMContentLoaded', function() {
         awd: '4WD',
         fwd: 'Front'
     };
+
+    function safeParseFloat(str) {
+        if (typeof str !== 'string') {
+            str = String(str);
+        }
+        // Заменяем запятые на точки для единообразия
+        const normalized = str.replace(',', '.');
+        // Удаляем все символы кроме цифр, точек и минусов
+        const cleaned = normalized.replace(/[^\d.-]/g, '');
+        const result = parseFloat(cleaned);
+        return isNaN(result) ? 0 : result; // Запасной вариант
+    }
     
     themeToggle.addEventListener('change', function() {
         document.body.classList.toggle('dark-mode', this.checked);
@@ -80,19 +92,19 @@ document.addEventListener('DOMContentLoaded', function() {
 			: document.getElementById('stock-drive-type').value;
 
 		return {
-			weight: parseFloat(document.getElementById('weight').value),
-			balance: parseFloat(document.getElementById('balance').value) / 100,
-			suspensionType: document.querySelector('input[name="suspension"]:checked').value,
-			effectiveDriveType: currentDriveType,
-			frontSpringMin: parseFloat(document.getElementById('front-spring-min').value),
-			frontSpringMax: parseFloat(document.getElementById('front-spring-max').value),
-			rearSpringMin: parseFloat(document.getElementById('rear-spring-min').value),
-			rearSpringMax: parseFloat(document.getElementById('rear-spring-max').value),
-			hasFrontAero: document.getElementById('front-aero').checked,
-			hasRearAero: document.getElementById('rear-aero').checked,
-			frontFreq: parseFloat(document.getElementById('front-freq').value),
-			rearBias: parseFloat(document.getElementById('rear-bias').value),
-			stiffnessMultiplier: parseFloat(document.getElementById('stiffness-multiplier').value),
+			weight: safeParseFloat(document.getElementById('weight').value),
+            balance: safeParseFloat(document.getElementById('balance').value) / 100,
+            suspensionType: document.querySelector('input[name="suspension"]:checked').value,
+            effectiveDriveType: currentDriveType,
+            frontSpringMin: safeParseFloat(document.getElementById('front-spring-min').value),
+            frontSpringMax: safeParseFloat(document.getElementById('front-spring-max').value),
+            rearSpringMin: safeParseFloat(document.getElementById('rear-spring-min').value),
+            rearSpringMax: safeParseFloat(document.getElementById('rear-spring-max').value),
+            hasFrontAero: document.getElementById('front-aero').checked,
+            hasRearAero: document.getElementById('rear-aero').checked,
+            frontFreq: safeParseFloat(document.getElementById('front-freq').value),
+            rearBias: safeParseFloat(document.getElementById('rear-bias').value),
+            stiffnessMultiplier: safeParseFloat(document.getElementById('stiffness-multiplier').value),
 		};
 	}
     
@@ -218,9 +230,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!validateField('rear-bias', '-100 - +100', -100, 100)) isValid = false;
         if (!validateField('stiffness-multiplier', '0.1-10', 0.1, 10)) isValid = false;
 
-        // Валидация диапазонов пружин
-        if (!validateRange('front-spring-min', 'front-spring-max', 'front-spring-error')) isValid = false;
-        if (!validateRange('rear-spring-min', 'rear-spring-max', 'rear-spring-error')) isValid = false;
+        // Валидация диапазонов пружин (теперь с раздельными ошибками)
+        if (!validateRange('front-spring-min', 'front-spring-max')) isValid = false;
+        if (!validateRange('rear-spring-min', 'rear-spring-max')) isValid = false;
 
         return isValid;
     }
@@ -228,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function validateField(id, message, minVal = -Infinity, maxVal = Infinity) {
         const element = document.getElementById(id);
         const errorElement = document.getElementById(`${id}-error`);
-        const value = parseFloat(element.value);
+        const value = safeParseFloat(element.value);
 
         if (element.value === '') { // Проверка на пустое поле
             errorElement.textContent = 'Enter value';
@@ -246,43 +258,47 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
-    function validateRange(minId, maxId, errorId) {
+    function validateRange(minId, maxId) {
         const minEl = document.getElementById(minId);
         const maxEl = document.getElementById(maxId);
-        const errorEl = document.getElementById(errorId);
-        const min = parseFloat(minEl.value);
-        const max = parseFloat(maxEl.value);
-        const minRange = 0;
-        const maxRange = 5000;
-        let isValid = true;
+        const minErrorEl = document.getElementById(minId + '-error');
+        const maxErrorEl = document.getElementById(maxId + '-error');
+        const min = safeParseFloat(minEl.value);
+        const max = safeParseFloat(maxEl.value);
 
+        let minValid = true;
+        let maxValid = true;
+
+        // Сбрасываем стили и ошибки
         minEl.style.borderColor = '';
         maxEl.style.borderColor = '';
+        minErrorEl.textContent = '';
+        maxErrorEl.textContent = '';
 
-        if (!minEl.value || isNaN(min) || min < minRange || min > maxRange) {
-            errorEl.textContent = 'Enter min value (0-5000)';
+        // Валидация MIN
+        if (!minEl.value || isNaN(min) || min < 0 || min > 5000) {
+            minErrorEl.textContent = 'Enter min value (0-5000)';
             minEl.style.borderColor = '#ff4d4d';
-            isValid = false;
+            minValid = false;
         }
 
-        if (!maxEl.value || isNaN(max) || max < minRange || max > maxRange) {
-            // Чтобы не дублировать сообщение, показываем его только если мин. поле в порядке
-            if (isValid) errorEl.textContent = 'Enter max value (0-5000)';
+        // Валидация MAX
+        if (!maxEl.value || isNaN(max) || max < 0 || max > 5000) {
+            maxErrorEl.textContent = 'Enter max value (0-5000)';
             maxEl.style.borderColor = '#ff4d4d';
-            isValid = false;
+            maxValid = false;
         }
 
-        if (isValid && min >= max) {
-            errorEl.textContent = 'max > min';
+        // Проверка MIN < MAX
+        if (minValid && maxValid && min >= max) {
+            minErrorEl.textContent = 'max > min';
+            maxErrorEl.textContent = 'max > min';
             minEl.style.borderColor = '#ff4d4d';
             maxEl.style.borderColor = '#ff4d4d';
-            isValid = false;
+            return false;
         }
 
-        if (isValid) {
-            errorEl.textContent = '';
-        }
-        return isValid;
+        return minValid && maxValid;
     }
 
     updateSwapOptions();
