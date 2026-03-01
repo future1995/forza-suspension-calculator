@@ -17,14 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof str !== 'string') {
             str = String(str);
         }
-        // Заменяем запятые на точки для единообразия
         const normalized = str.replace(',', '.');
-        // Удаляем все символы кроме цифр, точек и минусов
         const cleaned = normalized.replace(/[^\d.-]/g, '');
         const result = parseFloat(cleaned);
-        return isNaN(result) ? 0 : result; // Запасной вариант
+        return isNaN(result) ? 0 : result;
     }
-    
+
     themeToggle.addEventListener('change', function() {
         document.body.classList.toggle('dark-mode', this.checked);
         localStorage.setItem('theme', this.checked ? 'dark' : 'light');
@@ -59,11 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!validateAllInputs()) {
             return;
         }
-        
+
         const inputs = getFormValues();
-        
+
         let { frontSpring, rearSpring } = calculateSpringsByFrequency(inputs);
-        
+
         if (inputs.hasFrontAero) frontSpring *= 1.15;
         if (inputs.hasRearAero) rearSpring *= 1.17;
 
@@ -75,24 +73,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const { frontRebound, rearRebound, frontCompression, rearCompression } = calculateDampers(finalFrontSpring, finalRearSpring, inputs.suspensionType);
         const { frontARB, rearARB } = calculateARBs(finalFrontSpring, finalRearSpring, inputs);
-        
+
         resultsContainer.style.display = 'block';
-        displayResults({ 
-            frontSpring: finalFrontSpring, 
-            rearSpring: finalRearSpring, 
-            frontRebound, rearRebound, frontCompression, rearCompression, 
+        displayResults({
+            frontSpring: finalFrontSpring,
+            rearSpring: finalRearSpring,
+            frontRebound, rearRebound, frontCompression, rearCompression,
             frontARB, rearARB
         });
     });
-    
-	function getFormValues() {
-		const isSwapped = document.getElementById('drive-type-swap-checkbox').checked;
-		const currentDriveType = isSwapped 
-			? document.getElementById('swap-drive-type').value 
-			: document.getElementById('stock-drive-type').value;
 
-		return {
-			weight: safeParseFloat(document.getElementById('weight').value),
+    function getFormValues() {
+        const isSwapped = document.getElementById('drive-type-swap-checkbox').checked;
+        const currentDriveType = isSwapped
+            ? document.getElementById('swap-drive-type').value
+            : document.getElementById('stock-drive-type').value;
+
+        return {
+            weight: safeParseFloat(document.getElementById('weight').value),
             balance: safeParseFloat(document.getElementById('balance').value) / 100,
             suspensionType: document.querySelector('input[name="suspension"]:checked').value,
             effectiveDriveType: currentDriveType,
@@ -105,9 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
             frontFreq: safeParseFloat(document.getElementById('front-freq').value),
             rearBias: safeParseFloat(document.getElementById('rear-bias').value),
             stiffnessMultiplier: safeParseFloat(document.getElementById('stiffness-multiplier').value),
-		};
-	}
-    
+        };
+    }
+
     function calculateSpringsByFrequency({ weight, balance, frontFreq, rearBias }) {
         const frontSprungMass = (weight * balance) / 2;
         const rearSprungMass = (weight * (1 - balance)) / 2;
@@ -117,91 +115,75 @@ document.addEventListener('DOMContentLoaded', function() {
         return { frontSpring, rearSpring };
     }
 
+    function calculateDampers(frontSpringKg, rearSpringKg, suspensionType) {
+        let params;
 
-	
-	function calculateDampers(frontSpringKg, rearSpringKg, suspensionType) {
-		let params;
+        if (suspensionType === 'offroad-fh4') {
+            params = { DIVISOR: 15.0, COMPRESSION_RATIO: 0.6, MIN_VAL: 1.0, MAX_VAL: 10.0 };
+        } else if (suspensionType === 'racing-fh4') {
+            params = { DIVISOR: 16.5, COMPRESSION_RATIO: 0.7, MIN_VAL: 3.0, MAX_VAL: 20.0 };
+        } else {
+            params = { DIVISOR: 17.5, COMPRESSION_RATIO: 0.7, MIN_VAL: 1.0, MAX_VAL: 20.0 };
+        }
 
-		if (suspensionType === 'offroad-fh4') {
-			params = {
-				DIVISOR: 15.0,
-				COMPRESSION_RATIO: 0.6,
-				MIN_VAL: 1.0,
-				MAX_VAL: 10.0
-			};
-		} else if (suspensionType === 'racing-fh4') {
-			params = {
-				DIVISOR: 16.5,
-				COMPRESSION_RATIO: 0.7,
-				MIN_VAL: 3.0,
-				MAX_VAL: 20.0
-			};
-		} else { 
-			params = {
-				DIVISOR: 17.5,
-				COMPRESSION_RATIO: 0.7,
-				MIN_VAL: 1.0,
-				MAX_VAL: 20.0
-			};
-		}
+        let frontRebound = frontSpringKg / params.DIVISOR;
+        let rearRebound = rearSpringKg / params.DIVISOR;
 
-		const frontRebound = clamp(frontSpringKg / params.DIVISOR, params.MIN_VAL, params.MAX_VAL);
-		const rearRebound = clamp(rearSpringKg / params.DIVISOR, params.MIN_VAL, params.MAX_VAL);
-		
-		const compressionMinVal = (suspensionType === 'race') ? params.MIN_VAL / 2 : params.MIN_VAL;
-		
-		const frontCompression = clamp(frontRebound * params.COMPRESSION_RATIO, compressionMinVal, params.MAX_VAL);
-		const rearCompression = clamp(rearRebound * params.COMPRESSION_RATIO, compressionMinVal, params.MAX_VAL);
-		
-		return { frontRebound, rearRebound, frontCompression, rearCompression };
-	}
+        const ratio = Math.max(frontSpringKg, rearSpringKg) / Math.min(frontSpringKg, rearSpringKg);
+        const compensation = Math.sqrt(ratio);
+
+        if (frontSpringKg > rearSpringKg) {
+            rearRebound *= compensation;
+        } else if (rearSpringKg > frontSpringKg) {
+            frontRebound *= compensation;
+        }
+
+        frontRebound = clamp(frontRebound, params.MIN_VAL, params.MAX_VAL);
+        rearRebound = clamp(rearRebound, params.MIN_VAL, params.MAX_VAL);
+
+        const compressionMinVal = (suspensionType === 'race') ? params.MIN_VAL / 2 : params.MIN_VAL;
+
+        const frontCompression = clamp(frontRebound * params.COMPRESSION_RATIO, compressionMinVal, params.MAX_VAL);
+        const rearCompression = clamp(rearRebound * params.COMPRESSION_RATIO, compressionMinVal, params.MAX_VAL);
+
+        return { frontRebound, rearRebound, frontCompression, rearCompression };
+    }
 
     function calculateARBs(frontSpring, rearSpring, inputs) {
         const arbRange = { min: 1, max: 65 };
 
-        // Вспомогательная функция для расчета нейтрального значения ARB
         const calculateNeutralARB = (spring, minSpring, maxSpring) => {
-            // Предотвращение деления на ноль
             if (maxSpring <= minSpring) {
-                return (arbRange.min + arbRange.max) / 2; // Возвращаем среднее значение в качестве запасного варианта
+                return (arbRange.min + arbRange.max) / 2;
             }
-            // Расчет, в каком проценте от доступного диапазона находится жесткость пружины
             const stiffnessRatio = (spring - minSpring) / (maxSpring - minSpring);
-            // Применение этого процента к диапазону ARB
             return (arbRange.max - arbRange.min) * stiffnessRatio + arbRange.min;
         };
 
-        // Рассчитываем нейтральные базовые значения для переда и зада
         let frontARB = calculateNeutralARB(frontSpring, inputs.frontSpringMin, inputs.frontSpringMax);
         let rearARB = calculateNeutralARB(rearSpring, inputs.rearSpringMin, inputs.rearSpringMax);
 
-        // Применяем общепринятые смещения для коррекции управляемости
         switch(inputs.effectiveDriveType) {
             case 'fwd':
-                // Для FWD делаем зад жестче, чтобы бороться с андерстиром
                 rearARB = frontARB * 1.5;
                 break;
             case 'rwd':
-                // Для RWD делаем перед немного жестче заднего для стабильности на выходе
                 frontARB = rearARB * 1.1;
                 break;
             case 'awd_stock':
-                // Для стокового AWD нужна умеренная коррекция андерстира
                 rearARB = frontARB * 1.4;
                 break;
             case 'awd_swapped':
-                // Для свапнутого AWD нужна агрессивная коррекция андерстира
                 rearARB = frontARB * 1.9;
                 break;
         }
 
-        // Возвращаем значения, ограниченные диапазоном игры
         return {
             frontARB: clamp(frontARB, arbRange.min, arbRange.max),
             rearARB: clamp(rearARB, arbRange.min, arbRange.max)
         };
     }
-    
+
     function displayResults(data) {
         document.getElementById('res-front-spring').textContent = `${data.frontSpring.toFixed(1)} KGF/MM`;
         document.getElementById('res-rear-spring').textContent = `${data.rearSpring.toFixed(1)} KGF/MM`;
@@ -216,21 +198,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function clamp(value, min, max) {
         return Math.min(Math.max(value, min), max);
     }
-    
+
     function validateAllInputs() {
         let isValid = true;
         document.querySelectorAll('.error').forEach(el => el.textContent = '');
 
-        // Валидация основных полей
         if (!validateField('weight', '100-5000', 100, 5000)) isValid = false;
         if (!validateField('balance', '1-99', 1, 99)) isValid = false;
-
-        // Валидация полей Frequency Tuning
         if (!validateField('front-freq', '1.0-6.0', 1.0, 6.0)) isValid = false;
         if (!validateField('rear-bias', '-100 - +100', -100, 100)) isValid = false;
         if (!validateField('stiffness-multiplier', '0.1-10', 0.1, 10)) isValid = false;
-
-        // Валидация диапазонов пружин (теперь с раздельными ошибками)
         if (!validateRange('front-spring-min', 'front-spring-max')) isValid = false;
         if (!validateRange('rear-spring-min', 'rear-spring-max')) isValid = false;
 
@@ -242,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const errorElement = document.getElementById(`${id}-error`);
         const value = safeParseFloat(element.value);
 
-        if (element.value === '') { // Проверка на пустое поле
+        if (element.value === '') {
             errorElement.textContent = 'Enter value';
             element.style.borderColor = '#ff4d4d';
             return false;
@@ -269,27 +246,23 @@ document.addEventListener('DOMContentLoaded', function() {
         let minValid = true;
         let maxValid = true;
 
-        // Сбрасываем стили и ошибки
         minEl.style.borderColor = '';
         maxEl.style.borderColor = '';
         minErrorEl.textContent = '';
         maxErrorEl.textContent = '';
 
-        // Валидация MIN
         if (!minEl.value || isNaN(min) || min < 0 || min > 5000) {
             minErrorEl.textContent = 'Enter min value (0-5000)';
             minEl.style.borderColor = '#ff4d4d';
             minValid = false;
         }
 
-        // Валидация MAX
         if (!maxEl.value || isNaN(max) || max < 0 || max > 5000) {
             maxErrorEl.textContent = 'Enter max value (0-5000)';
             maxEl.style.borderColor = '#ff4d4d';
             maxValid = false;
         }
 
-        // Проверка MIN < MAX
         if (minValid && maxValid && min >= max) {
             minErrorEl.textContent = 'max > min';
             maxErrorEl.textContent = 'max > min';
